@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7598d189-3f39-4c91-a04d-fc9c355ec839">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="8c273364-058f-4114-82ca-0467b6ae8616"/>
+	<parameter name="cnpj" class="java.lang.String"/>
+	<parameter name="nome" class="java.lang.String"/>
+	<parameter name="telefone" class="java.lang.String"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="cnpj" class="java.lang.String"/>
+	<field name="telefone" class="java.lang.String"/>
+	<variable name="totalFornecedores" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{nome}]]></variableExpression>
+	</variable>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="170">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="22591bb0-f836-4364-a10f-609ee8a14086"/>
+				<staticText>
+					<reportElement x="20" y="20" width="322" height="43" forecolor="#FFFFFF" uuid="c6daff13-9943-44f9-949e-377e3a29164c"/>
+					<textElement>
+						<font size="20" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Relatorio de Fornecedores]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="e0dce1b9-d24b-4aac-8e88-fe0aaa3f988b"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Add a description here]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement x="0" y="83" width="100" height="20" uuid="6f28ec4e-6280-4677-acea-d6e14dea07ce"/>
+				<text><![CDATA[filtros]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="104" width="267" height="20" uuid="6bb69caa-f50f-485c-aa16-5be4ff0cce22"/>
+				<textFieldExpression><![CDATA["Nome do fornecedor: "+$P{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="124" width="167" height="20" uuid="4ac03e16-5a53-4960-8728-0a352073aeac"/>
+				<textFieldExpression><![CDATA["Telefone: "+$P{telefone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="278" y="124" width="185" height="20" uuid="453de5b9-7608-456b-a903-718d7d72d6f7"/>
+				<textFieldExpression><![CDATA["cnpj"+$P{cnpj}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="27"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="a8504180-3b55-477f-948a-a9ef45e1db72"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="14f27411-defd-47a8-b126-51ec1f03a2f0"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="c9dfc61d-bfdb-4855-a911-0505d92fae6d"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="5aa3846f-2837-48c9-a3bc-f84cfb1b6a82"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="6dd350bd-9440-4064-9dd2-6f0e4217d347"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="70">
+			<staticText>
+				<reportElement x="34" y="41" width="117" height="20" uuid="ec30cde1-5c01-4109-89f1-88b2d62a0635"/>
+				<text><![CDATA[Total de fornecedores:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="151" y="41" width="137" height="20" uuid="80c7fbb7-76f2-4eb4-bd37-0d7aa8313bfc"/>
+				<textFieldExpression><![CDATA[$V{totalFornecedores}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
